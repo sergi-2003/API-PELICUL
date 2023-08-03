@@ -1,0 +1,35 @@
+<!-- interfaz.component.html -->
+<header>
+<img class="logo" src="https://1000marcas.net/wp-content/uploads/2020/02/Logotipo-rojo-de-YouTube.png">
+<div class="busqueda">
+    <input  class="animated-input" type="text" [(ngModel)]="query" placeholder="Buscar videos...">
+    <button (click)="searchVideos()">Buscar</button>
+  </div>
+</header>
+
+
+<body>
+  
+  <div  *ngIf="videos.length > 0">
+    <div class="videos" *ngFor="let video of videos">
+      <h1>{{ video.snippet.title }}</h1>
+      <p>{{ video.snippet.description }}</p>
+      <iframe width="560" height="315" [src]="getSafeUrl(video.id.videoId)" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- interfaz.component.html -->
+<div *ngIf="videos.length > 0">
+  <!-- Mostrar los videos sugeridos aquí -->
+  <div *ngFor="let video of videos">
+    <h3>{{ video.snippet.title }}</h3>
+    <p>{{ video.snippet.description }}</p>
+    <iframe width="560" height="315" [src]="getSafeUrl(video.id.videoId)" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- Resto del contenido de la interfaz -->
+
+
+</body>
+  <!-- Resto del contenido de la interfaz -->
